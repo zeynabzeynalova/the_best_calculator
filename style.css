@@ -1,0 +1,174 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+    font-family: Arial, sans-serif;
+    transition: background 0.5s ease-in-out;
+}
+
+.container {
+    text-align: center;
+}
+
+.calculator {
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 1s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.display input {
+    width: 100%;
+    height: 50px;
+    font-size: 24px;
+    text-align: right;
+    background: rgba(0, 0, 0, 0.1);
+    border: none;
+    outline: none;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin-top: 20px;
+}
+
+button {
+    height: 50px;
+    font-size: 18px;
+    border: none;
+    border-radius: 10px;
+    transition: 0.2s;
+    cursor: pointer;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
+}
+
+/* Default Dark Mode Styles (Casio Tərzi) */
+body.dark-mode button {
+    background: #222;
+    color: white;
+}
+
+body.dark-mode button:nth-child(4n) { /* Əməliyyat düymələri */
+    background: #ff9500;
+    color: black;
+}
+
+body.dark-mode button:hover {
+    background: #333;
+}
+
+/* Light Mode Styles */
+body.light-mode {
+    background: #ffffff;
+}
+
+body.light-mode button {
+    background: #ddd;
+    color: black;
+}
+
+body.light-mode button:nth-child(4n) { /* Əməliyyat düymələri */
+    background: #ff9500;
+    color: black;
+}
+
+body.light-mode button:hover {
+    background: #bbb;
+}
+
+#theme-toggle {
+    background: #ffbb00;
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+}
+.calculator::before {
+    content: "";
+    position: absolute;
+    width: 150%;
+    height: 150%;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.15) 10%, transparent 70%);
+    filter: blur(20px);
+    z-index: -1;
+}
+.calculator {
+    position: relative;
+    border: 3px solid #ff9500;
+    box-shadow: 0 0 20px #ff9500;
+    animation: neonGlow 2s infinite alternate;
+}
+
+@keyframes neonGlow {
+    0% { box-shadow: 0 0 10px #ff9500; }
+    100% { box-shadow: 0 0 40px #ff00ff; }
+}
+.clear-btn {
+    background: linear-gradient(45deg, #ff5e62, #ff9966);
+    color: white;
+    font-size: 24px;
+    padding: 15px;
+    border-radius: 50%;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+button {
+    transition: all 0.1s ease-in-out;
+}
+
+button:active {
+    transform: scale(1.2);
+    box-shadow: 0px 0px 10px rgba(0, 255, 0, 0.5);
+}
+#display {
+    transition: transform 0.4s ease-in-out;
+    border-radius: 15px;
+}
+
+
+button {
+    transition: all 0.2s ease;
+    box-shadow: 0px 0px 0px rgba(255, 0, 0, 1);
+}
+
+button:active {
+    background-color: #ff4081;
+    transform: scale(1.1);
+    box-shadow: 0 0 30px rgba(255, 0, 0, 0.8);
+    animation: flash 0.5s;
+}
+
+@keyframes flash {
+    0% { opacity: 0.8; }
+    50% { opacity: 1; }
+    100% { opacity: 0.8; }
+}
+#background {
+    background-image: url('sunset.gif');
+    animation: movingBackground 10s infinite;
+}
+
+@keyframes movingBackground {
+    0% { background-position: 0 0; }
+    100% { background-position: 100% 100%; }
+}
