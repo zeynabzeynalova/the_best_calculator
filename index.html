@@ -8,62 +8,85 @@
 </head>
 <body>
 
-    <!-- 📱 Bilimsel Kalkulyator -->
-    <div class="calculator">
-        <div class="display">
-            <input type="text" id="screen" disabled>
+    <!-- Kalkulyator və Pul Çevirici İkonu -->
+    <div class="nav">
+        <button class="icon" onclick="switchMode('calculator')">Kalkulyator</button>
+        <button class="icon" onclick="switchMode('currency')">Pul Çevirmə</button>
+    </div>
+
+    <!-- Kalkulyator Bölməsi -->
+    <div id="calculator" class="section">
+        <!-- 📱 Bilimsel Kalkulyator -->
+        <div class="calculator">
+            <div class="display">
+                <input type="text" id="screen" disabled>
+            </div>
+            
+            <div class="buttons">
+                <button class="btn func" onclick="clearScreen()">C</button>
+                <button class="btn func" onclick="toggleSign()">±</button>
+                <button class="btn func" onclick="percent()">%</button>
+                <button class="btn operator" onclick="appendOperator('/')">÷</button>
+                
+                <button class="btn" onclick="appendNumber(7)">7</button>
+                <button class="btn" onclick="appendNumber(8)">8</button>
+                <button class="btn" onclick="appendNumber(9)">9</button>
+                <button class="btn operator" onclick="appendOperator('*')">×</button>
+
+                <button class="btn" onclick="appendNumber(4)">4</button>
+                <button class="btn" onclick="appendNumber(5)">5</button>
+                <button class="btn" onclick="appendNumber(6)">6</button>
+                <button class="btn operator" onclick="appendOperator('-')">−</button>
+
+                <button class="btn" onclick="appendNumber(1)">1</button>
+                <button class="btn" onclick="appendNumber(2)">2</button>
+                <button class="btn" onclick="appendNumber(3)">3</button>
+                <button class="btn operator" onclick="appendOperator('+')">+</button>
+
+                <button class="btn zero" onclick="appendNumber(0)">0</button>
+                <button class="btn" onclick="appendDot()">.</button>
+                <button class="btn equal" onclick="calculate()">=</button>
+            </div>
+
+            <div class="scientific-buttons">
+                <button class="btn" onclick="appendOperator('(')">(</button>
+                <button class="btn" onclick="appendOperator(')')">)</button>
+                <button class="btn" onclick="calculateSin()">sin</button>
+                <button class="btn" onclick="calculateCos()">cos</button>
+                <button class="btn" onclick="calculateTan()">tan</button>
+                <button class="btn" onclick="calculateSinh()">sinh</button>
+                <button class="btn" onclick="calculateCosh()">cosh</button>
+                <button class="btn" onclick="calculateTanh()">tanh</button>
+                <button class="btn" onclick="calculateLog()">log</button>
+                <button class="btn" onclick="calculateLn()">ln</button>
+                <button class="btn" onclick="calculateSqrt()">√</button>
+                <button class="btn" onclick="calculateSquare()">x²</button>
+                <button class="btn" onclick="calculateCube()">x³</button>
+                <button class="btn" onclick="calculatePower()">xʸ</button>
+                <button class="btn" onclick="calculateExp()">e^x</button>
+                <button class="btn" onclick="calculateInverse()">1/x</button>
+                <button class="btn" onclick="calculateFactorial()">x!</button>
+            </div>
         </div>
-        
-        <div class="buttons">
-            <!-- Birinci Sıra -->
-            <button class="btn func" onclick="clearScreen()">C</button>
-            <button class="btn func" onclick="toggleSign()">±</button>
-            <button class="btn func" onclick="percent()">%</button>
-            <button class="btn operator" onclick="appendOperator('/')">÷</button>
+    </div>
 
-            <!-- İkinci Sıra -->
-            <button class="btn" onclick="appendNumber(7)">7</button>
-            <button class="btn" onclick="appendNumber(8)">8</button>
-            <button class="btn" onclick="appendNumber(9)">9</button>
-            <button class="btn operator" onclick="appendOperator('*')">×</button>
-
-            <!-- Üçüncü Sıra -->
-            <button class="btn" onclick="appendNumber(4)">4</button>
-            <button class="btn" onclick="appendNumber(5)">5</button>
-            <button class="btn" onclick="appendNumber(6)">6</button>
-            <button class="btn operator" onclick="appendOperator('-')">−</button>
-
-            <!-- Dördüncü Sıra -->
-            <button class="btn" onclick="appendNumber(1)">1</button>
-            <button class="btn" onclick="appendNumber(2)">2</button>
-            <button class="btn" onclick="appendNumber(3)">3</button>
-            <button class="btn operator" onclick="appendOperator('+')">+</button>
-
-            <!-- Beşinci Sıra -->
-            <button class="btn zero" onclick="appendNumber(0)">0</button>
-            <button class="btn" onclick="appendDot()">.</button>
-            <button class="btn equal" onclick="calculate()">=</button>
-        </div>
-
-        <!-- 🔬 Bilimsel Funksiyalar -->
-        <div class="scientific-buttons">
-            <button class="btn" onclick="appendOperator('(')">(</button>
-            <button class="btn" onclick="appendOperator(')')">)</button>
-            <button class="btn" onclick="calculateSin()">sin</button>
-            <button class="btn" onclick="calculateCos()">cos</button>
-            <button class="btn" onclick="calculateTan()">tan</button>
-            <button class="btn" onclick="calculateSinh()">sinh</button>
-            <button class="btn" onclick="calculateCosh()">cosh</button>
-            <button class="btn" onclick="calculateTanh()">tanh</button>
-            <button class="btn" onclick="calculateLog()">log</button>
-            <button class="btn" onclick="calculateLn()">ln</button>
-            <button class="btn" onclick="calculateSqrt()">√</button>
-            <button class="btn" onclick="calculateSquare()">x²</button>
-            <button class="btn" onclick="calculateCube()">x³</button>
-            <button class="btn" onclick="calculatePower()">xʸ</button>
-            <button class="btn" onclick="calculateExp()">e^x</button>
-            <button class="btn" onclick="calculateInverse()">1/x</button>
-            <button class="btn" onclick="calculateFactorial()">x!</button>
+    <!-- Pul Çevirici Bölməsi -->
+    <div id="currency" class="section" style="display:none;">
+        <!-- Pul çevirici funksiyasını buraya əlavə edəcəyik -->
+        <h2>Pul Çevirici</h2>
+        <div id="currency-converter">
+            <label for="amount">Məbləğ:</label>
+            <input type="number" id="amount" placeholder="Məbləğ yazın">
+            <label for="from-currency">Hansı valyutadan:</label>
+            <select id="from-currency">
+                <!-- Burada bütün valyutaları əlavə edəcəyik -->
+            </select>
+            <label for="to-currency">Hansı valyutaya:</label>
+            <select id="to-currency">
+                <!-- Burada bütün valyutaları əlavə edəcəyik -->
+            </select>
+            <button onclick="convertCurrency()">Çevir</button>
+            <p id="converted-amount"></p>
         </div>
     </div>
 
