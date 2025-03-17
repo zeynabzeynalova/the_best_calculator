@@ -1,18 +1,46 @@
-const screen = document.ge// Kalkulyator və Pul Çevirici arasında keçid funksiyası
-function switchMode(mode) {
-    const calculatorSection = document.getElementById('calculator');
-    const currencySection = document.getElementById('currency');
+let darkMode = true;
 
-    // Hər ikisini gizlət
-    calculatorSection.style.display = 'none';
-    currencySection.style.display = 'none';
+document.getElementById("theme-toggle").addEventListener("click", function() {
+    darkMode = !darkMode;
+    document.body.style.background = darkMode ? "#1e1e1e" : "#ffffff";
+});
 
-    // İstədiyinizi göstər
-    if (mode === 'calculator') {
-        calculatorSection.style.display = 'block';
-    } else if (mode === 'currency') {
-        currencySection.style.display = 'block';
+function insertValue(value) {
+    document.getElementById("display").value += value;
+    playSound();
+}
+
+function clearDisplay() {
+    document.getElementById("display").value = "";
+}
+
+function deleteLast() {
+    let current = document.getElementById("display").value;
+    document.getElementById("display").value = current.slice(0, -1);
+}
+
+function calculate() {
+    try {
+        let result = eval(document.getElementById("display").value);
+        document.getElementById("display").value = result;
+    } catch {
+        document.getElementById("display").value = "Error";
     }
 }
 
-// Kalkulyator və Pul Çevirici üçün əvvəlki JavaScript kodları buraya əlavə edilir
+function calculateAdvanced(operation) {
+    let input = parseFloat(document.getElementById("display").value);
+    switch (operation) {
+        case "sqrt":
+            document.getElementById("display").value = Math.sqrt(input);
+            break;
+        case "square":
+            document.getElementById("display").value = Math.pow(input, 2);
+            break;
+    }
+}
+
+function playSound() {
+    let audio = new Audio("click.mp3");
+    audio.play();
+}
