@@ -1,46 +1,37 @@
-let darkMode = true;
-
-document.getElementById("theme-toggle").addEventListener("click", function() {
-    darkMode = !darkMode;
-    document.body.style.background = darkMode ? "#1e1e1e" : "#ffffff";
-});
-
-function insertValue(value) {
-    document.getElementById("display").value += value;
-    playSound();
-}
-
+// Ekranı təmizlə
 function clearDisplay() {
     document.getElementById("display").value = "";
 }
 
+// Sonuncu simvolu sil
 function deleteLast() {
-    let current = document.getElementById("display").value;
-    document.getElementById("display").value = current.slice(0, -1);
+    let display = document.getElementById("display");
+    display.value = display.value.slice(0, -1);
 }
 
-function calculate() {
+// Ekrana simvol əlavə et
+function appendToDisplay(value) {
+    document.getElementById("display").value += value;
+}
+
+// Nəticəni hesabla
+function calculateResult() {
     try {
         let result = eval(document.getElementById("display").value);
         document.getElementById("display").value = result;
-    } catch {
+    } catch (error) {
         document.getElementById("display").value = "Error";
     }
 }
 
-function calculateAdvanced(operation) {
-    let input = parseFloat(document.getElementById("display").value);
-    switch (operation) {
-        case "sqrt":
-            document.getElementById("display").value = Math.sqrt(input);
-            break;
-        case "square":
-            document.getElementById("display").value = Math.pow(input, 2);
-            break;
-    }
-}
+// Tünd və açıq mod dəyişimi
+document.getElementById("theme-toggle").addEventListener("click", function() {
+    document.body.classList.toggle("dark-mode");
 
-function playSound() {
-    let audio = new Audio("click.mp3");
-    audio.play();
-}
+    // Günəş və Ay simvolunu dəyiş
+    if (document.body.classList.contains("dark-mode")) {
+        this.textContent = "☀";
+    } else {
+        this.textContent = "🌙";
+    }
+});
