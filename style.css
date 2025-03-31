@@ -55,6 +55,7 @@ body {
     margin-top: 10px;
 }
 
+/* Rəqəm düymələri */
 button {
     width: 60px;
     height: 60px;
@@ -62,19 +63,19 @@ button {
     border: none;
     border-radius: 10px;
     cursor: pointer;
-    background: #d1d1d1; /* Açıq rejimdə tünd görünsün */
+    background: #b0b0b0; /* Açıq rejimdə daha tünd rəng */
     color: #000;
     font-weight: bold;
     transition: background 0.2s;
 }
 
 button:hover {
-    background: #a9a9a9;
+    background: #909090;
 }
 
-/* Operator düymələri */
+/* Operator düymələri (+, -, ×, ÷, %) */
 .operator {
-    background: #ff9500;
+    background: #ff9500; /* Narıncı */
     color: #fff;
 }
 
@@ -82,7 +83,7 @@ button:hover {
     background: #e58b00;
 }
 
-/* C və ⌫ düymələri */
+/* "C" və "⌫" düymələri */
 .clear, .delete {
     background: #ff3b30;
     color: #fff;
@@ -92,7 +93,7 @@ button:hover {
     background: #e02d24;
 }
 
-/* Bərabər düyməsi */
+/* "=" düyməsi */
 .equal {
     background: #34c759;
     color: white;
