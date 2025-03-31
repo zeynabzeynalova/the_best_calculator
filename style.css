@@ -1,152 +1,104 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: Arial, sans-serif;
-}
-
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #f4f4f4;
-    transition: background 0.3s, color 0.3s;
+    background: linear-gradient(135deg, #1e1e1e, #3a3a3a);
+    font-family: Arial, sans-serif;
+    transition: background 0.5s ease-in-out;
 }
 
 .container {
     text-align: center;
-    position: relative;
-}
-
-#theme-toggle {
-    position: absolute;
-    top: -40px;
-    right: 10px;
-    border: none;
-    background: none;
-    font-size: 24px;
-    cursor: pointer;
 }
 
 .calculator {
-    background: #fff;
+    width: 300px;
+    background: rgba(255, 255, 255, 0.1);
     padding: 20px;
-    border-radius: 10px;
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
+    box-shadow: 0px 10px 30px rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    animation: fadeIn 1s ease-in-out;
 }
 
-#display {
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.display input {
     width: 100%;
     height: 50px;
     font-size: 24px;
     text-align: right;
-    padding: 10px;
+    background: rgba(0, 0, 0, 0.1);
     border: none;
-    background: #e6e6e6;
-    border-radius: 5px;
+    outline: none;
+    color: white;
+    padding: 10px;
+    border-radius: 10px;
 }
 
-/* Buttonlar */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     gap: 10px;
-    margin-top: 10px;
+    margin-top: 20px;
 }
 
-/* Rəqəm düymələri */
 button {
-    width: 60px;
-    height: 60px;
-    font-size: 20px;
+    height: 50px;
+    font-size: 18px;
     border: none;
     border-radius: 10px;
+    transition: 0.2s;
     cursor: pointer;
-    background: #b0b0b0; /* Açıq rejimdə daha tünd rəng */
-    color: #000;
-    font-weight: bold;
-    transition: background 0.2s;
+    box-shadow: 0px 4px 15px rgba(255, 255, 255, 0.2);
 }
 
-button:hover {
-    background: #909090;
-}
-
-/* Operator düymələri (+, -, ×, ÷, %) */
-.operator {
-    background: #ff9500; /* Narıncı */
-    color: #fff;
-}
-
-.operator:hover {
-    background: #e58b00;
-}
-
-/* "C" və "⌫" düymələri */
-.clear, .delete {
-    background: #ff3b30;
-    color: #fff;
-}
-
-.clear:hover, .delete:hover {
-    background: #e02d24;
-}
-
-/* "=" düyməsi */
-.equal {
-    background: #34c759;
+/* Default Dark Mode Styles (Casio Tərzi) */
+body.dark-mode button {
+    background: #222;
     color: white;
 }
 
-.equal:hover {
-    background: #2aa44a;
+body.dark-mode button:nth-child(4n) { /* Əməliyyat düymələri */
+    background: #ff9500;
+    color: black;
 }
 
-/* Tünd Mod */
-.dark-mode {
-    background-color: #222;
-    color: #fff;
-}
-
-.dark-mode .calculator {
+body.dark-mode button:hover {
     background: #333;
 }
 
-.dark-mode #display {
-    background: #444;
-    color: #fff;
+/* Light Mode Styles */
+body.light-mode {
+    background: #ffffff;
 }
 
-.dark-mode button {
-    background: #555;
-    color: #fff;
+body.light-mode button {
+    background: #ddd;
+    color: black;
 }
 
-.dark-mode button:hover {
-    background: #777;
-}
-
-.dark-mode .operator {
+body.light-mode button:nth-child(4n) { /* Əməliyyat düymələri */
     background: #ff9500;
+    color: black;
 }
 
-.dark-mode .operator:hover {
-    background: #e58b00;
+body.light-mode button:hover {
+    background: #bbb;
 }
 
-.dark-mode .clear, .dark-mode .delete {
-    background: #ff3b30;
-}
-
-.dark-mode .clear:hover, .dark-mode .delete:hover {
-    background: #e02d24;
-}
-
-.dark-mode .equal {
-    background: #34c759;
-}
-
-.dark-mode .equal:hover {
-    background: #2aa44a;
+#theme-toggle {
+    background: #ffbb00;
+    color: black;
+    font-size: 20px;
+    padding: 10px;
+    border-radius: 50%;
+    position: absolute;
+    top: 20px;
+    right: 20px;
 }

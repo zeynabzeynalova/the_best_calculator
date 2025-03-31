@@ -1,37 +1,49 @@
-// Ekranı təmizlə
+let darkMode = true;
+
+document.getElementById("theme-toggle").addEventListener("click", function() {
+    darkMode = !darkMode;
+    document.body.classList.toggle("light-mode", !darkMode);
+    document.body.classList.toggle("dark-mode", darkMode);
+});
+
+document.body.classList.add("dark-mode"); // İlk açılışda Dark Mode olsun
+
+function insertValue(value) {
+    document.getElementById("display").value += value;
+    playSound();
+}
+
 function clearDisplay() {
     document.getElementById("display").value = "";
 }
 
-// Sonuncu simvolu sil
 function deleteLast() {
-    let display = document.getElementById("display");
-    display.value = display.value.slice(0, -1);
+    let current = document.getElementById("display").value;
+    document.getElementById("display").value = current.slice(0, -1);
 }
 
-// Ekrana simvol əlavə et
-function appendToDisplay(value) {
-    document.getElementById("display").value += value;
-}
-
-// Nəticəni hesabla
-function calculateResult() {
+function calculate() {
     try {
         let result = eval(document.getElementById("display").value);
         document.getElementById("display").value = result;
-    } catch (error) {
+    } catch {
         document.getElementById("display").value = "Error";
     }
 }
 
-// Tünd və açıq mod dəyişimi
-document.getElementById("theme-toggle").addEventListener("click", function() {
-    document.body.classList.toggle("dark-mode");
-
-    // Günəş və Ay simvolunu dəyiş
-    if (document.body.classList.contains("dark-mode")) {
-        this.textContent = "☀";
-    } else {
-        this.textContent = "🌙";
+function calculateAdvanced(operation) {
+    let input = parseFloat(document.getElementById("display").value);
+    switch (operation) {
+        case "sqrt":
+            document.getElementById("display").value = Math.sqrt(input);
+            break;
+        case "square":
+            document.getElementById("display").value = Math.pow(input, 2);
+            break;
     }
-});
+}
+
+function playSound() {
+    let audio = new Audio("click.mp3");
+    audio.play();
+}
